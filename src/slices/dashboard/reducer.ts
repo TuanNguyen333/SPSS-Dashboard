@@ -70,7 +70,7 @@ export const fetchTotalRevenue = createAsyncThunk(
   async ({ pageNumber = 1, pageSize = 10 }: { pageNumber?: number; pageSize?: number }) => {
     try {
       const { data } = await axios.get<RevenueResponse>(
-        'http://localhost:5041/api/dashboards/total-revenue',
+        `${process.env.REACT_APP_API_URL}/api/dashboards/total-revenue`,
         { params: { pageNumber, pageSize } }
       );
       return data.data.items[0]?.totalRevenue ?? 0;
@@ -86,7 +86,7 @@ export const fetchBestSellers = createAsyncThunk(
   async ({ pageNumber = 1, pageSize = 10 }: { pageNumber?: number; pageSize?: number }) => {
     try {
       const response = await axios.get<BestSellersResponse>(
-        `http://localhost:5041/api/dashboards/best-sellers`,
+        `${process.env.REACT_APP_API_URL}/api/dashboards/best-sellers`,
         {
           params: { pageNumber, pageSize }
         }

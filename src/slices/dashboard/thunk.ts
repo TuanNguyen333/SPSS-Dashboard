@@ -24,7 +24,7 @@ export const fetchTotalRevenue = createAsyncThunk(
   async () => {
     try {
       const response = await axios.get<RevenueResponse>(
-        'http://localhost:5041/api/dashboards/total-revenue',
+        `${process.env.REACT_APP_API_URL}/api/dashboards/total-revenue`,
         {
           params: { pageNumber: 1, pageSize: 10 }
         }

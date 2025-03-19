@@ -87,7 +87,7 @@ export default function AddNew() {
   }, []);
 
   const fetchOptions = async () => {
-    axios.get("http://localhost:5041/api/brands").then(({ data }) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/api/brands`).then(({ data }) => {
       setBrandOptions(
         data.items.map((item: any) => ({
           value: item.id,
@@ -96,7 +96,7 @@ export default function AddNew() {
       );
     });
 
-    axios.get("http://localhost:5041/api/skin-types").then(({ data }) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/api/skin-types`).then(({ data }) => {
       setSkinTypeOptions(
         data.items.map((item: any) => ({
           value: item.id,
@@ -106,7 +106,7 @@ export default function AddNew() {
     });
 
     axios
-      .get("http://localhost:5041/api/product-categories")
+      .get(`${process.env.REACT_APP_API_URL}/api/product-categories`)
       .then(({ data }) => {
         setCategoryOptions(
           data.items.map((item: any) => ({
